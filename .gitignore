@@ -1,2 +1,7 @@
 .vscode/
 01_TerminalProject/Show
+02_Multifile/prog*
+02_Multifile/README
+02_Multifile/liboutput*
+02_Multifile/*.o
+02_Multifile/test_*
