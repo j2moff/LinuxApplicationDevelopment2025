@@ -5,3 +5,5 @@
 02_Multifile/liboutput*
 02_Multifile/*.o
 02_Multifile/test_*
+04_Debugging/range
+04_Debugging/actual_*
