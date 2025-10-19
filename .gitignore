@@ -7,3 +7,6 @@
 02_Multifile/test_*
 04_Debugging/range
 04_Debugging/actual_*
+05_Regexps/esub
+05_Regexps/actual_*
+05_Regexps/expected_*
