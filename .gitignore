@@ -10,3 +10,7 @@
 05_Regexps/esub
 05_Regexps/actual_*
 05_Regexps/expected_*
+06_Tracing/move
+06_Tracing/protected.so
+06_Tracing/input_*
+06_Tracing/output_*
