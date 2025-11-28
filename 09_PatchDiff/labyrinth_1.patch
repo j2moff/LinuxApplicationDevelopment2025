@@ -1,0 +1,36 @@
+diff --git a/09_PatchDiff/labyrinth.c b/09_PatchDiff/labyrinth.c
+index dee77e6..e5cfb79 100644
+--- a/09_PatchDiff/labyrinth.c
++++ b/09_PatchDiff/labyrinth.c
+@@ -6,8 +6,8 @@
+ int ROOMS_NUM;
+ int LABYRINTH_LENGTH;
+
+-#define WALL '#'
+-#define PATH '.'
++char PATH;
++char WALL;
+
+ void init_labyrinth(char** labyrinth) {
+     for (int i = 0; i < LABYRINTH_LENGTH; i++)
+@@ -106,14 +106,18 @@ void print_labyrinth(char** labyrinth) {
+ }
+
+ int main(int argc, char** argv) {
+-    if (argc != 2) {
++    if (argc != 3) {
+         fprintf(stderr, "got wrong number of arguments\n");
+         return 1;
+     }
+
+-    ROOMS_NUM = atoi(argv[1]);
++    ROOMS_NUM = atoi(argv[2]);
+     LABYRINTH_LENGTH = ROOMS_NUM * 2 + 1;
+
++    char* chars = argv[1];
++    PATH = chars[0];
++    WALL = chars[1];
++
+     srand(time(NULL));
+
+     char** labyrinth = (char**)malloc(LABYRINTH_LENGTH * sizeof(char*));

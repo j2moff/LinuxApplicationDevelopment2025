@@ -1,0 +1,105 @@
+diff --git a/09_PatchDiff/labyrinth.c b/09_PatchDiff/labyrinth.c
+index 85ff2ff..dee77e6 100644
+--- a/09_PatchDiff/labyrinth.c
++++ b/09_PatchDiff/labyrinth.c
+@@ -3,13 +3,13 @@
+ #include <stdbool.h>
+ #include <time.h>
+ 
+-#define ROOMS_NUM 6
+-#define LABYRINTH_LENGTH (ROOMS_NUM * 2 + 1)
++int ROOMS_NUM;
++int LABYRINTH_LENGTH;
+ 
+ #define WALL '#'
+ #define PATH '.'
+ 
+-void init_labyrinth(char labyrinth[LABYRINTH_LENGTH][LABYRINTH_LENGTH]) {
++void init_labyrinth(char** labyrinth) {
+     for (int i = 0; i < LABYRINTH_LENGTH; i++)
+         for (int j = 0; j < LABYRINTH_LENGTH; j++)
+                 labyrinth[i][j] = (i % 2 == 0 || j % 2 == 0) ? WALL : PATH;
+@@ -28,7 +28,7 @@ bool valid_coords(int x, int y, int size) {
+     return (x >= 0 && x < size && y >= 0 && y < size);
+ }
+ 
+-void gen_labyrinth(int x, int y, bool visited_rooms[ROOMS_NUM][ROOMS_NUM], char labyrinth[LABYRINTH_LENGTH][LABYRINTH_LENGTH]) {
++void gen_labyrinth(int x, int y, bool** visited_rooms, char** labyrinth) {
+     int dirs[4] = {0, 1, 2, 3};
+     shuffle_dirs(dirs);
+ 
+@@ -52,7 +52,7 @@ void gen_labyrinth(int x, int y, bool visited_rooms[ROOMS_NUM][ROOMS_NUM], char
+     }
+ }
+ 
+-int count_walls(char labyrinth[LABYRINTH_LENGTH][LABYRINTH_LENGTH]) {
++int count_walls(char** labyrinth) {
+     int walls_counter = 0;
+ 
+     for (int i = 0; i < LABYRINTH_LENGTH; i++)
+@@ -63,7 +63,7 @@ int count_walls(char labyrinth[LABYRINTH_LENGTH][LABYRINTH_LENGTH]) {
+     return walls_counter;
+ }
+ 
+-void add_walls(char labyrinth[LABYRINTH_LENGTH][LABYRINTH_LENGTH]) {
++void add_walls(char** labyrinth) {
+     int labyrinth_area = LABYRINTH_LENGTH * LABYRINTH_LENGTH;
+     int walls_counter = count_walls(labyrinth);
+ 
+@@ -97,7 +97,7 @@ void add_walls(char labyrinth[LABYRINTH_LENGTH][LABYRINTH_LENGTH]) {
+     }
+ }
+ 
+-void print_labyrinth(char labyrinth[LABYRINTH_LENGTH][LABYRINTH_LENGTH]) {
++void print_labyrinth(char** labyrinth) {
+     for (int i = 0; i < LABYRINTH_LENGTH; i++) {
+         for (int j = 0; j < LABYRINTH_LENGTH; j++)
+             printf("%c", labyrinth[i][j]);
+@@ -105,18 +105,44 @@ void print_labyrinth(char labyrinth[LABYRINTH_LENGTH][LABYRINTH_LENGTH]) {
+     }
+ }
+ 
+-int main() {
++int main(int argc, char** argv) {
++    if (argc != 2) {
++        fprintf(stderr, "got wrong number of arguments\n");
++        return 1;
++    }
++
++    ROOMS_NUM = atoi(argv[1]);
++    LABYRINTH_LENGTH = ROOMS_NUM * 2 + 1;
++
+     srand(time(NULL));
+ 
+-    char labyrinth[LABYRINTH_LENGTH][LABYRINTH_LENGTH];
++    char** labyrinth = (char**)malloc(LABYRINTH_LENGTH * sizeof(char*));
++    for (int i = 0; i < LABYRINTH_LENGTH; i++)
++        labyrinth[i] = (char*)malloc(LABYRINTH_LENGTH * sizeof(char));
++
+     init_labyrinth(labyrinth);
+ 
+-    bool visited_rooms[ROOMS_NUM][ROOMS_NUM] = {false};
++    bool** visited_rooms = (bool**)malloc(ROOMS_NUM * sizeof(bool*));
++    for (int i = 0; i < ROOMS_NUM; i++) {
++        visited_rooms[i] = (bool*)malloc(ROOMS_NUM * sizeof(bool));
++
++        for (int j = 0; j < ROOMS_NUM; j++)
++            visited_rooms[i][j] = false;
++    }
++
+     gen_labyrinth(0, 0, visited_rooms, labyrinth);
+ 
+     add_walls(labyrinth);
+ 
+     print_labyrinth(labyrinth);
+ 
++    for (int i = 0; i < LABYRINTH_LENGTH; i++)
++        free(labyrinth[i]);
++    free(labyrinth);
++
++    for (int i = 0; i < ROOMS_NUM; i++)
++        free(visited_rooms[i]);
++    free(visited_rooms);
++
+     return 0;
+ }

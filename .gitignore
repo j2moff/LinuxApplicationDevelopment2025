@@ -14,3 +14,6 @@
 06_Tracing/protected.so
 06_Tracing/input_*
 06_Tracing/output_*
+09_PatchDiff/labyrinth
+09_PatchDiff/labyrinth_[0-9]
+09_PatchDiff/labyrinth_[0-9].c
