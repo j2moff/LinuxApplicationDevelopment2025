@@ -1,0 +1,83 @@
+# Russian translations for LinuxApplicationDevelopment package.
+# Copyright (C) 2026 THE LinuxApplicationDevelopment'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the LinuxApplicationDevelopment package.
+# j2m <j2m@jjm>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LinuxApplicationDevelopment 2025\n"
+"Report-Msgid-Bugs-To: j2m@off.com\n"
+"POT-Creation-Date: 2026-01-19 17:19+0300\n"
+"PO-Revision-Date: 2026-01-16 23:18+0300\n"
+"Last-Translator: j2m <j2m@jjm>\n"
+"Language-Team: Russian <gnu@d07.ru>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/romanizer.c:37
+#, c-format
+msgid "Usage: romanizer [INFILE OUTFILE]\n"
+msgstr "Использование: romanizer [INFILE OUTFILE]\n"
+
+#: src/romanizer.c:38
+#, c-format
+msgid "Arguments:\n"
+msgstr "Аргументы:\n"
+
+#: src/romanizer.c:39
+#, c-format
+msgid "  INFILE  - cyrillic text input file\n"
+msgstr "  INFILE  - входной файл с текстом на кириллице\n"
+
+#: src/romanizer.c:40
+#, c-format
+msgid "  OUTFILE - latin text output file\n"
+msgstr "  OUTFILE - выходной файл с текстом на латинице\n"
+
+#: src/romanizer.c:41
+#, c-format
+msgid ""
+"If INFILE and OUTFILE are not provided, STDIN and STDOUT will be used "
+"respectively.\n"
+msgstr ""
+"При отсутствии INFILE и OUTFILE будут использоваться STDIN и STDOUT "
+"соответственно.\n"
+
+#: src/romanizer.c:70
+#, c-format
+msgid "got wrong number of arguments\n"
+msgstr "получено неправильное количество аргументов\n"
+
+#: src/romanizer.c:76
+#, c-format
+msgid "Write your cyrillic text:\n"
+msgstr "Введите свой текст на кириллице:\n"
+
+#: src/romanizer.c:77
+#, c-format
+msgid "(Press Enter or Ctrl+D to get the romanized text)\n"
+msgstr "(Нажмите Enter или Ctrl+D для вывода романизированного текста)\n"
+
+#: src/romanizer.c:78
+#, c-format
+msgid "(Press Enter+Ctrl+D or Ctrl+D twice to quit)\n"
+msgstr "(Нажмите Enter+Ctrl+D или Ctrl+D дважды для выхода)\n"
+
+#: src/romanizer.c:94
+#, c-format
+msgid "got the same input and output file\n"
+msgstr "получены одинаковый входной и выходной файл\n"
+
+#: src/romanizer.c:101
+#, c-format
+msgid "failed to open the input file\n"
+msgstr "произошла ошибка при открытии входного файла\n"
+
+#: src/romanizer.c:108
+#, c-format
+msgid "failed to open the output file\n"
+msgstr "произошла ошибка при открытии выходного файла\n"
